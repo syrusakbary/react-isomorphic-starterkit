@@ -2,7 +2,7 @@ import {Server} from "hapi";
 import React from "react";
 import Router from "react-router";
 import Transmit from "react-transmit";
-import routes from "views/Routes";
+import routes from "compiled/routes";
 import url from "url";
 
 /**

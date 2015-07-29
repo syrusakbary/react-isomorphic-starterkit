@@ -1,5 +1,7 @@
 var webpack = require("webpack");
-var config = require("./webpack.client.js");
+var make_config = require("./make-webpack-config");
+
+var config = make_config();
 
 config.cache = true;
 config.debug = true;

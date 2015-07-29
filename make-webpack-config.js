@@ -32,7 +32,10 @@ module.exports = function (isServer, isDev) {
 		}
 		processStyle = function(loaders) {
 			var joined_loaders = loaders.join('!');
-			if (!isServer) {
+			if (isDev && !isServer) {
+				return 'style-loader!'+joined_loaders;
+			}
+			else if (!isServer) {
 				return ExtractTextPlugin.extract('style-loader', joined_loaders);
 			}
 			joined_loaders = joined_loaders.replace(/^css-loader/, "css-loader/locals");

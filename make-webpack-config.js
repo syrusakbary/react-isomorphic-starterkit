@@ -20,7 +20,7 @@ module.exports = function (isServer, isDev) {
 	var separateStylesheet = true || !isDev;
 
 
-	var cssLoader = "css-loader?localIdentName=[path][name]---[local]---[hash:base64:5]";
+	var cssLoader = isDev?"css-loader?localIdentName=[path][name]---[local]---[hash:base64:5]":"css-loader";
 	var babelLoader = "babel-loader?stage=0&optional=runtime&plugins=typecheck";
 	var jsLoaders = isDev?["react-hot", babelLoader]:[babelLoader];
 

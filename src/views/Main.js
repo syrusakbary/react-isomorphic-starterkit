@@ -3,6 +3,7 @@ import React from "react";
 import InlineCss from "react-inline-css";
 import Transmit from "react-transmit";
 
+import styles from "./Main.css";
 /**
  * Main React application entry-point for both the server and client.
  */
@@ -57,8 +58,8 @@ class Main extends React.Component {
 		const stargazers = this.props.allStargazers;
 
 		return (
-			<InlineCss stylesheet={Main.css(avatarSize)} namespace="Main">
-				<a className="github" href={repositoryUrl}>
+			<div className={styles.this}>
+				<a className={styles.github} href={repositoryUrl}>
 					<img src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"/>
 				</a>
 
@@ -89,44 +90,20 @@ class Main extends React.Component {
 					<a href={repositoryUrl} title="you here? star us!">
 						{stargazers.map((user) => {
 							return (
-								<img key={user.id} className="avatar" src={avatarUrl(user.id)}
+								<img key={user.id} className={styles.avatar} src={avatarUrl(user.id)}
 								     title={user.login} alt={user.login} />
 							);
 						})}
-						<img className="avatar" src={avatarUrl(0)} alt="you?"/>
+						<img className={styles.avatar} src={avatarUrl(0)} alt="you?"/>
 					</a>
 				</p>
-			</InlineCss>
+			</div>
 		);
 	}
 	/**
 	 * <InlineCss> component allows you to write a CSS stylesheet for your component. Target
 	 * your component with `&` and its children with `& selectors`. Be specific.
 	 */
-	static css (avatarSize) {
-		return (`
-			& .github {
-				position: absolute;
-				top: 0;
-				right: 0;
-				border: 0;
-			}
-			& {
-				font-family: sans-serif;
-				color: #0df;
-				padding: 10px 30px 30px;
-				width: 380px;
-				margin: 10px auto;
-				background: #222;
-			}
-			& .avatar {
-				border-radius: 50%;
-				width: ${avatarSize}px;
-				height: ${avatarSize}px;
-				margin: 0 2px 2px 0;
-			}
-		`);
-	}
 
 }
 

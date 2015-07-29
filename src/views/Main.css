@@ -1,0 +1,20 @@
+:local(.github) {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: 0;
+}
+:local(.this) {
+	font-family: sans-serif;
+	color: #0df;
+	padding: 10px 30px 30px;
+	width: 380px;
+	margin: 10px auto;
+	background: #222;
+}
+:local(.avatar) {
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	margin: 0 2px 2px 0;
+}

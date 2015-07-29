@@ -57,13 +57,15 @@ server.ext("onPreResponse", (request, reply) => {
 
 	Router.run(routes, request.path, (Handler, router) => {
 		Transmit.renderToString(Handler).then(({reactString, reactData}) => {
+			const webserver = process.env.NODE_ENV === "production" ? "" : "//localhost:8080";
 			let output = (
 				`<!doctype html>
 				<html lang="en-us">
 					<head>
 						<meta charset="utf-8">
 						<title>react-isomorphic-starterkit</title>
-						<link rel="shortcut icon" href="/favicon.ico">
+						<link rel="shortcut icon" href="/favicon.ico" />
+						<link rel="stylesheet" href="${webserver}/dist/main.css" media="all" />
 					</head>
 					<body>
 						<div id="react-root">${reactString}</div>
@@ -71,7 +73,6 @@ server.ext("onPreResponse", (request, reply) => {
 				</html>`
 			);
 
-			const webserver = process.env.NODE_ENV === "production" ? "" : "//localhost:8080";
 			output = Transmit.injectIntoMarkup(output, reactData, [`${webserver}/dist/client.js`]);
 
 			reply(output);

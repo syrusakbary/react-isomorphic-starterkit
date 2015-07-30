@@ -11,7 +11,7 @@ global.__SERVER__ = true;
 
 if (process.env.NODE_ENV !== "production") {
 	if (!require("piping")({hook: true})) {
-		process.exit();
+		// process.exit();
 	}
 }
 

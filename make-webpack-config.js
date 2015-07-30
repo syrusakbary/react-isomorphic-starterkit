@@ -68,7 +68,7 @@ module.exports = function (isServer, isDev) {
 
 				/* Images */
 				{include: /\.png|jpg|jpeg|gif$/, loaders: ["url-loader?limit=10000"]},
-				{include: /\.svg$/, loaders: ["raw-loader?limit=10000", "svgo-loader"]},
+				{include: /\.svg$/, loaders: ["raw-loader?limit=10000", "svgo-loader?useConfig=svgoConfig"]},
 
 				/* Styles */
 				{include: /\.css$/, loader: processStyle([cssLoader])},
@@ -89,6 +89,12 @@ module.exports = function (isServer, isDev) {
 				"web_modules"
 			],
 			extensions: ["", ".json", ".js"]
+		},
+		svgoConfig: {
+			plugins: [
+				{removeTitle: true},
+				{convertColors: {shorthex: false}}
+			]
 		},
 		node:    {
 			__dirname: true,

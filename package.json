@@ -20,6 +20,7 @@
   "main": "babel.server.js",
   "scripts": {
     "start": "NODE_PATH=\"./src\" node ./babel.server",
+    "postinstall": "npm run build",
     "build": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack.all.js",
     "watch-client": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack.client-watch.js && node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.client-watch.js",
     "watch-server": "node ./node_modules/webpack/bin/webpack.js --watch --verbose --colors --display-error-details --config webpack.server.js",

@@ -1,6 +1,5 @@
 import __fetch from "isomorphic-fetch";
 import React from "react";
-import InlineCss from "react-inline-css";
 import Transmit from "react-transmit";
 
 import styles from "./Main.css";
